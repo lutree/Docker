@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3893b57-15d9-43c9-8e52-a6c0cdc189bf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docker.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/corekeeper/core.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/corekeeper/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/corekeeper/dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pzserver/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pzserver/dockerfile" afterDir="false" />
+    <list default="true" id="f3893b57-15d9-43c9-8e52-a6c0cdc189bf" name="Changes" comment="init commit">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,11 +51,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1671448245699</updated>
-      <workItem from="1671448246792" duration="3975000" />
+      <workItem from="1671448246792" duration="4254000" />
     </task>
+    <task id="LOCAL-00001" summary="init commit">
+      <created>1671476080740</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671476080740</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="init commit" />
   </component>
 </project>
