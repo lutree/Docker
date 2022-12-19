@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  core-keeper:
+    image: escaping/core-keeper-dedicated
+    volumes:
+      - core-keeper-server-files:/home/steam/core-keeper-dedicated
+      - core-keeper-server-data:/home/steam/core-keeper-data
+    build:
+      context: .
+      dockerfile: dockerfile
+    env_file:
+      - ./core.env
+    restart: always
+    stop_grace_period: 2m
+    ports:
+      - 27015:27015
+      - 27036:27036
+      - 27015:27015/udp
+      - 27031-27036:27031-27036/udp
+volumes:
+  core-keeper-server-files:
+  core-keeper-server-data:
