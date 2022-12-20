@@ -6,10 +6,8 @@ ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPPNAME}"
 ENV STEAMCMDDIR "${HOMEDIR}/steamcmd"
 ENV ZOMBOIDDIR "${HOMEDIR}/Zomboid"
 
-ENV PZSERVER_PASSWORD qwe123!@#
-
 RUN ${STEAMCMDDIR}/steamcmd.sh +force_install_dir ${HOMEDIR}/${STEAMAPPNAME} +login anonymous +app_update ${STEAMAPPID} validate +quit
 
 VOLUME ${ZOMBOIDDIR}
 
-CMD ["/bin/bash", "${STEAMAPPDIR}/start-server.sh ${PZSERVER_PASSWORD}"]
+CMD ["/bin/bash", "/home/steam/pzserver/start-server.sh"]

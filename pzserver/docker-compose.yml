@@ -14,7 +14,7 @@ services:
       - "16262-16272:16262-16272"
       - "27015:27015"
     volumes:
-      - "pzserver_data:/home/steam/pzserver"
+      - "data:/home/steam/pzserver"
 volumes:
-  pzserver_data:
+  data:
 
