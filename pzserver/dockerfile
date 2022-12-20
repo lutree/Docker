@@ -8,6 +8,4 @@ ENV ZOMBOIDDIR "${HOMEDIR}/Zomboid"
 
 RUN ${STEAMCMDDIR}/steamcmd.sh +force_install_dir ${HOMEDIR}/${STEAMAPPNAME} +login anonymous +app_update ${STEAMAPPID} validate +quit
 
-VOLUME ${ZOMBOIDDIR}
-
 CMD ["/bin/bash", "/home/steam/pzserver/start-server.sh"]
