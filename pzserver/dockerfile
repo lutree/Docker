@@ -1,11 +1,49 @@
+###########################################################
+# Dockerfile that builds a CSGO Gameserver
+###########################################################
 FROM cm2network/steamcmd:root
 
 ENV STEAMAPPID 380870
-ENV STEAMAPPNAME pzserver
-ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPPNAME}"
-ENV STEAMCMDDIR "${HOMEDIR}/steamcmd"
-ENV ZOMBOIDDIR "${HOMEDIR}/Zomboid"
+ENV STEAMAPP pz
+ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated"
+ENV LC_ALL ko_KR.EUC-KR
+ENV LANG ko_KR.EUC-KR
+ENV LANGUAGE ko_KR.EUC-KR
+ENV TZ 'Asia/Seoul'
 
-RUN ${STEAMCMDDIR}/steamcmd.sh +force_install_dir ${HOMEDIR}/${STEAMAPPNAME} +login anonymous +app_update ${STEAMAPPID} validate +quit
+# Install required packages
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends --no-install-suggests \
+      dos2unix \
+    && apt-get install -y git locales \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-CMD ["/bin/bash", "/home/steam/pzserver/start-server.sh"]
+## locale change
+RUN sed -i '/en_US.UTF-8 UTF-8/ s/^/# /' /etc/locale.gen && \
+    sed -i 's/^# *\(ko_KR.EUC-KR\)/\1/' /etc/locale.gen && locale-gen
+
+# Copy the entry point file
+COPY --chown=${USER}:${USER} scripts/entry.sh /server/scripts/entry.sh
+RUN chmod 550 /server/scripts/entry.sh
+
+# Download the Project Zomboid dedicated server app using the steamcmd app
+# Set the entry point file permissions
+RUN set -x \
+  && mkdir -p "${STEAMAPPDIR}" \
+  && chown -R "${USER}:${USER}" "${STEAMAPPDIR}" \
+  && bash "${STEAMCMDDIR}/steamcmd.sh" +force_install_dir "${STEAMAPPDIR}" \
+                                    +login anonymous \
+                                    +app_update "${STEAMAPPID}" validate \
+                                    +quit
+
+# Create required folders to keep their permissions on mount
+RUN mkdir -p "${HOMEDIR}/Zomboid"
+
+WORKDIR ${HOMEDIR}
+# Expose ports
+EXPOSE 8766-8767/udp \
+       16261/udp \
+       16262-16272/tcp
+
+ENTRYPOINT ["/server/scripts/entry.sh"]
