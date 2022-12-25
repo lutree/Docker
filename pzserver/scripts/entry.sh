@@ -119,8 +119,7 @@ su - steam -c "${STEAMCMDDIR}/steamcmd.sh +force_install_dir \"${STEAMAPPDIR}\" 
 
 su - steam -c "export LC_ALL=\"ko_KR.EUC-KR\" && \
                rm -rf /home/steam/Zomboid/Server/* && \
-               git clone https://github.com/lutree/pzserver_config.git /home/steam/Zomboid/Server && \
-               "
+               git clone https://github.com/lutree/pzserver_config.git /home/steam/Zomboid/Server"
 
 #if [ ! -d "${HOMEDIR}/Zomboid/Server/.git" ]; then
 #  su - steam -c "rm -rf /home/steam/Zomboid/Server/*"
